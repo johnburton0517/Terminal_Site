@@ -5,37 +5,40 @@ body {
     color: rgb(94, 207, 72);
 }
 
+.welcome {
+    color: rgb(126, 175, 12);
+    margin-left: 7%;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+}
+
 .terminal-input {
     width: 50%;
     background-color: rgb(20, 18, 18);
-    color: rgb(39, 175, 12);
+    color: rgb(7, 189, 165);
     font-size: 20px;
-
-    border: 1px solid rgb(255, 255, 255);
-    /* border: 0px rgb(20, 18, 18); */
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    border: 0px rgb(20, 18, 18);
+    outline: none;
 }
 
 .terminal-output {
-    width: 50%;
     margin-left: 10%;
     font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
 }
-
-/* .terminal-input::before {
-    content: "user@johnburtonterminal";
-    color: rgb(39, 175, 12);
-} */
 
 #command-line::before {
     content: "user@terminal:~$";
-    color: rgb(39, 175, 12);
+    color: rgb(32, 150, 9);
     margin-left: 7%;
     font-size: 20px;
     font-family: "Courier New", Courier, monospace;
     font-weight: bold;
 }
 
-.terminal-user{
+.prev-command{
     color: rgb(39, 175, 12);
     margin-left: 7%;
     font-size: 20px;
