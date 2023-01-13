@@ -2,11 +2,11 @@
 
 body {
     background-color: rgb(20, 18, 18);
-    color: rgb(94, 207, 72);
+    color: rgb(143, 197, 17);
 }
 
 .welcome {
-    color: rgb(126, 175, 12);
+    color: rgb(143, 197, 17);
     margin-left: 7%;
     font-size: 20px;
     font-family: "Courier New", Courier, monospace;
@@ -40,7 +40,11 @@ body {
 
 .prev-command{
     color: rgb(39, 175, 12);
-    margin-left: 7%;
+    margin-left: -3.5%;
     font-size: 20px;
     font-family: "Courier New", Courier, monospace;
+}
+
+.command-text {
+    color: rgb(7, 189, 165);
 }
