@@ -1,8 +1,9 @@
 
 
-  const input = document.getElementById("terminal-input");
-  const output = document.getElementById("terminal-output");
+const input = document.getElementById("terminal-input");
+const output = document.getElementById("terminal-output");
 
+// gets the input from the user for the terminal
 input.addEventListener("keyup", function(event) {
     // 13 is the keycode for the enter key
     if (event.keyCode === 13) {
