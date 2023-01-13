@@ -2,6 +2,7 @@
 
 const input = document.getElementById("terminal-input");
 const output = document.getElementById("terminal-output");
+const prevCommand = document.getElementById("prev-command");
 
 // gets the input from the user for the terminal
 input.addEventListener("keyup", function(event) {
@@ -9,10 +10,11 @@ input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         const text = input.value;
         
-        // outputs the user input with a new line
-        output.innerHTML += text + "<br>";
+        // outputs the previous command
+        // output.innerHTML += "user@terminal: " + text + "<br>";
+        prevCommand.innerHTML = "user@terminal:~$ " + text + "<br>";
 
-        // if user inputs "help"
+        // // if user inputs "help"
         if (text === "help" || text === "Help" || text === "HELP") {
             output.innterHTML += helpInput();
         }
@@ -20,6 +22,12 @@ input.addEventListener("keyup", function(event) {
         else if (text === "clear" || text === "Clear" || text === "CLEAR") {
             output.innerHTML = clearInput();
         }
+
+        // // switch case for input
+        // switch (text) {
+        //     case help:
+        //         helpInput()
+        // }
 
         // Clear the input field
         input.value = "";  
@@ -33,6 +41,7 @@ function helpInput() {
 
 // if user inputs "clear"
 function clearInput() {
+    prevCommand.innerHTML = "";
     return output.innerHTML = "";
 }
   
