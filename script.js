@@ -3,6 +3,7 @@
 const input = document.getElementById("terminal-input");
 const output = document.getElementById("terminal-output");
 const welcome = document.getElementById("welcome");
+const ascii = document.getElementById("ascii");
 
 // array to store previous commands
 let prevCommands = [];
@@ -160,6 +161,7 @@ function skillsInput() {
 function clearInput() {
     welcome.innerHTML = "";
     output.innerHTML = "";
+    ascii.innerHTML = "";
 }
 
 function wrongInput() {
