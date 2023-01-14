@@ -57,9 +57,19 @@ input.addEventListener("keyup", function(event) {
                 projectsInput();
                 break;
 
-            case "skills":
+            case "gui":
                 printPrevCommand(text);
-                skillsInput();
+                guiInput();
+                break;
+
+            case "projects -gui":
+                printPrevCommand(text);
+                guiInput();
+                break;
+
+            case "projects -tic_tac_toe":
+                printPrevCommand(text);
+                TicTacToe();
                 break;
 
             default:
@@ -83,8 +93,8 @@ input.addEventListener("keydown", function(event) {
             return;
         }
         else {
-            input.value = prevCommands[prevCommandsIndex - 1];
             prevCommandsIndex--;
+            input.value = prevCommands[prevCommandsIndex];
         }
 
         // move cursor to end of input
@@ -93,7 +103,7 @@ input.addEventListener("keydown", function(event) {
     }
     // 40 is the keycode for the down arrow
     else if (event.keyCode === 40) {
-        // if there are no previous commands, do nothing                    ////////////////////// this is where the problem is
+        // if there are no previous commands, do nothing
         if (prevCommands[prevCommandsIndex + 1] === undefined) {
             input.value = "";
         }
@@ -104,25 +114,30 @@ input.addEventListener("keydown", function(event) {
 
         // move cursor to end of input
         input.selectionStart = input.selectionEnd = input.value.length;
-        console.log(input.selectionStart);
     }
 });
 
 
 
 
-
 // if user inputs "help"
 function helpInput() {
-    output.innerHTML += "about<br>projects<br>skills<br>education<br>github<br>linkedin<br>help<br>clear<br>";
+    output.innerHTML += `<span style="color: rgb(7, 189, 165);">about<br>
+                        projects<br>
+                        education<br>
+                        github<br>
+                        linkedin<br>
+                        gui<br>
+                        help<br>
+                        clear</span><br>`;
 }
 
 // if user inputs "about"
 function aboutInput() {
     output.innerHTML += `My name is John Burton. I graduated from the University of South Carolina with a degree in Computer Engineering in 2022. I have a 
     passion for building and creating, and I love using my programming skills to bring ideas to life. Whether 
-    I'm building a web application, creating a mobile app, or automating a task, I'm always looking for new challenges 
-    and opportunities to learn and grow.`;
+    I'm building a web application, creating a game, or automating a task, I'm always looking for new challenges 
+    and opportunities to learn and grow.<br>`;
 }
 
 // if user inputs "education"
@@ -144,18 +159,23 @@ function linkedinInput() {
     window.open("https://linkedin.com/in/johnburton0517");
 }
 
-////////////////////////////
 // if user inputs "projects"
 function projectsInput() {
-    output.innerHTML += `Needs to be added`;
+    output.innerHTML += `Type <span class='command-text'>'project -gui'</span> to open my GUI portfolio. <br>
+                        Type <span class='command-text'>'projects -tic_tac_toe'</span> to play Tic Tac Toe. <br>`;
 }
 
-// if user inputs "skills"
-function skillsInput() {
-    output.innerHTML += `Needs to be added`;
+function guiInput() {
+    output.innerHTML += "Opening GUI...";
+    // open GUI in new tab
+    window.open("https://johnburton0517.github.io/personal_portfolio/");
 }
 
-////////////////////////////
+function TicTacToe() {
+    output.innerHTML += "Opening Tic Tac Toe...";
+    // open Tic Tac Toe in new tab
+    window.open("https://johnburton0517.github.io/personal_portfolio/tictactoe.html");
+}
 
 // if user inputs "clear"
 function clearInput() {
