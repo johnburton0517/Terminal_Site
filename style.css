@@ -38,6 +38,15 @@ body {
     font-weight: bold;
 }
 
+#command-line.secret::before {
+    content: "Password: ";
+    color: rgb(32, 150, 9);
+    margin-left: 7%;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
 .prev-command{
     color: rgb(39, 175, 12);
     margin-left: -3.5%;
