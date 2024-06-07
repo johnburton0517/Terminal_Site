@@ -9,9 +9,6 @@ const ascii = document.getElementById("ascii");
 let prevCommands = [];
 let prevCommandsIndex = 0;
 
-// variable for secret password
-let isSecret = false;
-
 // variable for if codes have been found
 let foundCode = false;
 let foundCode2 = false;
@@ -27,18 +24,6 @@ input.addEventListener("keyup", function(event) {
 
         // get the input from the user
         let text = input.value.toLowerCase();
-
-        // if isSecret is true, secret function is called
-        if (isSecret) {
-            secret(text);
-            isSecret = false;
-
-            // Clear the input field
-            input.value = "";
-            // change the secret class back to normal
-            document.getElementById("command-line").className="command-line";
-            return;
-        }
 
         // // switch case for input
         switch (String(text)) {
@@ -86,30 +71,14 @@ input.addEventListener("keyup", function(event) {
                 guiInput();
                 break;
 
+            case "projects -CBB_Score_Predictor":
+                printPrevCommand(text);
+                CBBScorePredictor();
+                break;
+
             case "projects -tic_tac_toe":
                 printPrevCommand(text);
                 TicTacToe();
-                break;
-
-            case "ls":
-                printPrevCommand(text);
-                ls();
-                break;
-
-            case "cat hidden.txt":
-                printPrevCommand(text);
-                output.innerHTML += `Secret Code: 14894`
-                break;
-
-            case "secret":
-                printPrevCommand(text);
-
-                // change the secret class to secret
-                document.getElementById("command-line").className="secret";
-
-                // set isSecret to true
-                isSecret = true;
-
                 break;
 
             default:
@@ -168,7 +137,6 @@ function helpInput() {
                         github<br>
                         linkedin<br>
                         gui<br>
-                        secret<br>
                         help<br>
                         clear</span><br>`;
 }
@@ -203,6 +171,7 @@ function linkedinInput() {
 // if user inputs "projects"
 function projectsInput() {
     output.innerHTML += `Type <span class='command-text'>'project -gui'</span> to open my GUI portfolio. <br>
+                        Type <span class='command-text'>'project -CBB_Score_Predictor'</span> to the GitHub for the CBB Score Predictor. <br>
                         Type <span class='command-text'>'projects -tic_tac_toe'</span> to play Tic Tac Toe. <br>`;
 }
 
@@ -218,61 +187,11 @@ function TicTacToe() {
     window.open("https://johnburton0517.github.io/personal_portfolio/tictactoe.html");
 }
 
-function ls() {
-    output.innerHTML += `hidden.txt<br>`;
+function CBBScorePredictor() {
+    output.innerHTML += "Opening CBB Score Predictor GitHub...";
+    // open CBB Score GutHub in new tab
+    window.open("https://github.com/johnburton0517/CBB_Score_Predictor");
 }
-
-function secret(password) {
-    if (foundCode === false && foundCode2 === false) {
-        if (password === "14894") {
-            output.innerHTML += `You found one of the the secret codes.<br>
-                                Keep looking for the other one.<br>`;
-            foundCode = true;
-        }
-        else if (password === "mpqzwo") {
-            output.innerHTML += `You found one of the the secret codes.<br>
-                                Keep looking for the other one.<br>`;
-            foundCode2 = true;
-        }
-        else {
-            output.innerHTML += `Incorrect password. <br>`;
-        }
-    }
-    else if (foundCode === true && foundCode2 === false) {
-        if (password === "mpqzwo") {
-            output.innerHTML += `You found the second secret code.<br>
-                                You can now access the secret page.<br>`;
-            foundCode2 = true;
-        }
-        else if (password === "14894") {
-            output.innerHTML += `You already found this secret code.<br>
-                                Keep looking for the other one.<br>`;
-        }
-        else {
-            output.innerHTML += `Incorrect password. <br>`;
-        }
-    }
-    else if (foundCode === false && foundCode2 === true) {
-        if (password === "14894") {
-            output.innerHTML += `You found the second secret code.<br>
-                                You can now access the secret page.<br>`;
-            foundCode = true;
-        }
-        else if (password === "mpqzwo") {
-            output.innerHTML += `You already found this secret code.<br>
-                                Keep looking for the other one.<br>`;
-        }
-        else {
-            output.innerHTML += `Incorrect password. <br>`;
-        }
-    }
-    if (foundCode === true && foundCode2 === true) {
-        output.innerHTML += `Opening secret page...<br>`;
-        // open secret page in new tab
-        // window.open("https://johnburton0517.github.io/personal_portfolio/secret.html");
-    }
-}
-
 
 // if user inputs "clear"
 function clearInput() {
@@ -288,6 +207,3 @@ function wrongInput() {
 function printPrevCommand(text) {
     output.innerHTML += `<h3 class='prev-command'>user@terminal:~$ ${text}<br></h3>`;
 }
-
-// console log one of the passwords on load of the page
-console.log("Secret Code: mpqzwo");
